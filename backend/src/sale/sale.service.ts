@@ -33,11 +33,11 @@ export class SaleService {
 	
   }
 
-  update(id: number, updateSaleDto: UpdateSaleDto) {
-    return `This action updates a #${id} sale`;
+  update(numProduit: string, updateSaleDto: UpdateSaleDto) {
+    return this.saleRepository.update({numProduit}, updateSaleDto)
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} sale`;
+  remove(numProduit: string) {
+	return this.saleRepository.delete({numProduit}) 
   }
 }
