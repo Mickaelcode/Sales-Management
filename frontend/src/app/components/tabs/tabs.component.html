@@ -12,10 +12,10 @@
         </ng-template>
         <ng-template #body let-product>
             <tr>
-                <td>{{ product.code }}</td>
-                <td>{{ product.name }}</td>
-                <td>{{ product.category }}</td>
-                <td>{{ product.quantity }}</td>
+                <td>{{ product.numProduit }}</td>
+                <td>{{ product.design }}</td>
+                <td>{{ product.prix }}</td>
+                <td>{{ product.quantite }}</td>
                 <td><app-button label="Modifier" severity="warn"></app-button></td>
                 <td><app-button label="Supprimer" severity="danger"></app-button></td>
             </tr>
