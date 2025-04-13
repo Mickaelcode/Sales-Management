@@ -4,7 +4,6 @@ import { ProductService } from '../../../service/productservice';
 import { TableModule } from 'primeng/table';
 import { CommonModule } from '@angular/common';
 import { ButtonComponent } from '../button/button.component';
-import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-tabs',

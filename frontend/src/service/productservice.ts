@@ -15,6 +15,12 @@ export class ProductService {
     );
   }
 
+  getMinMaxTotal(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/sale/getArray/montant`).pipe(
+      catchError(this.handleError)
+    );
+  }
+
   // Exemple : ajouter un utilisateur
   addUser(data: any): Observable<any> {
     return this.http.post(`${this.baseUrl}/users`, data).pipe(
