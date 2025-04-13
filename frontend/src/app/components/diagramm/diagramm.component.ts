@@ -13,7 +13,7 @@ import { minMaxTotal } from '../../../domain/minMaxTotal';
     imports: [ChartModule]
 })
 export class Diagramm implements OnInit {
-    products:any;
+    products : minMaxTotal = {total:0,minimum:0,maximum:0}
 
     basicData: any;
 
@@ -33,25 +33,28 @@ export class Diagramm implements OnInit {
     themeEffect = effect(() => {
         if (this.configService.transitionComplete()) {
             if (this.designerService.preset()) {
-                this.initChart();
+                
             }
         }
     });
 
     ngOnInit() {
-         this.productService.getMinMaxTotal().subscribe({
+         this.productService.getMinMaxTotal().subscribe(
+            {
             next: (data) => {
               this.products = data;
               console.log('Utilisateurs récupérés :', this.products);
+              this.initChart()
             },
             error: (err) => {
               console.error('Erreur lors de la récupération des utilisateurs', err);
             }
-          });
+          }
+        );
     }
 
     initChart() {
-        console.log("produit ato",this.products);
+        // console.log("produit ato",this.products);
         
         if (isPlatformBrowser(this.platformId)) {
             const documentStyle = getComputedStyle(document.documentElement);
@@ -64,7 +67,7 @@ export class Diagramm implements OnInit {
                 datasets: [
                     {
                         label: 'Sales',
-                        data : [2,7,6],
+                        data : [this.products.minimum, this.products.maximum, this.products.total],
                         backgroundColor: [
                             'rgba(249, 115, 22, 0.2)',
                             'rgba(6, 182, 212, 0.2)',
