@@ -21,7 +21,7 @@
                 <td>{{ product.prix }}</td>
                 <td>{{ product.quantite }}</td>
                 <td>{{ product.prix*product.quantite}}</td>
-                <td><app-button label="Modifier"  severity="warn"></app-button></td>
+                <td><form [data]="product"></form></td>
 				<td><app-button label="Supprimer" numProduit={{product.numProduit}}  severity="danger"></app-button></td>
             </tr>
         </ng-template>
