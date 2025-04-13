@@ -43,8 +43,8 @@ export class ProductService {
   }
 
   // Exemple : suppression d’un utilisateur
-  deleteUser(id: string): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/users/${id}`).pipe(
+  deleteSale(numProduit: string): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/sale/${numProduit}`).pipe(
       catchError(this.handleError)
     );
   }
