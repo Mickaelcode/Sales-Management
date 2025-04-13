@@ -40,4 +40,25 @@ export class SaleService {
   remove(numProduit: string) {
 	return this.saleRepository.delete({numProduit}) 
   }
+
+  /**
+   * create a method for getting ("montant" = "prix" * "quantity" ):
+   * 
+   */
+
+  async getMontant() : Promise<Montant> {
+    const sale = await this.saleRepository.find()
+    const data = sale.map(item=>item.prix*item.quantite)
+    const total = data.reduce((a,c)=>a+c)
+    const minimum = Math.min(...data)
+    const maximum = Math.max(...data)
+    return {total,maximum,minimum}
+    
+  }
+}
+
+export interface Montant{
+  total: number
+  maximum: number
+  minimum :number
 }
