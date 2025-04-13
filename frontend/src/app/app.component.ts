@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-// import { HttpClientModule } from '@angular/common/http';
 import { RouterOutlet } from '@angular/router';
 import { MenuBarComponent } from './components/menu-bar/menu-bar.component';
 import { TabsComponent } from './components/tabs/tabs.component';
+import { Diagramm } from './components/diagramm/diagramm.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,MenuBarComponent,TabsComponent],
+  imports: [RouterOutlet,MenuBarComponent,TabsComponent,Diagramm],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
