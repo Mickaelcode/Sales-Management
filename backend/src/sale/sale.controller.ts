@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Put } from '@nestjs/common';
 import { SaleService } from './sale.service';
 import { CreateSaleDto } from './dto/create-sale.dto';
 import { UpdateSaleDto } from './dto/update-sale.dto';
@@ -22,7 +22,7 @@ export class SaleController {
     return this.saleService.findOne(numProduit);
   }
 
-  @Patch(':numProduit')
+  @Put(':numProduit')
   update(@Param('numProduit') numProduit: string, @Body() updateSaleDto: UpdateSaleDto) {
     return this.saleService.update(numProduit, updateSaleDto);
   }
@@ -30,5 +30,12 @@ export class SaleController {
   @Delete(':numProduit')
   remove(@Param('numProduit') numProduit: string) {
     return this.saleService.remove(numProduit);
+  }
+
+  /**getting array of montant */
+  
+  @Get("/getArray/montant")
+  getMontant(){
+    return this.saleService.getMontant()
   }
 }
