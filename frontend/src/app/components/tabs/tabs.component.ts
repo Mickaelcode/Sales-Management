@@ -4,10 +4,11 @@ import { ProductService } from '../../../service/productservice';
 import { TableModule } from 'primeng/table';
 import { CommonModule } from '@angular/common';
 import { ButtonComponent } from '../button/button.component';
+import { Form } from '../form/form.component';
 
 @Component({
   selector: 'app-tabs',
-  imports: [TableModule, CommonModule, ButtonComponent],
+  imports: [TableModule, CommonModule, ButtonComponent,Form],
   templateUrl: './tabs.component.html',
   styleUrl: './tabs.component.css',
   standalone: true
