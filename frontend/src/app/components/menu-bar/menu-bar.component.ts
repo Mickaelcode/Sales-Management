@@ -1,16 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { Menubar } from 'primeng/menubar';
+import { DialogModule } from 'primeng/dialog';
+import { ButtonModule } from 'primeng/button';
+import { InputTextModule } from 'primeng/inputtext';
+
 
 @Component({
   selector: 'app-menu-bar',
   standalone: true,
-  imports: [Menubar],
+  imports: [Menubar,DialogModule,InputTextModule,ButtonModule],
   templateUrl: './menu-bar.component.html',
   styleUrl: './menu-bar.component.css'
 })
 export class MenuBarComponent implements OnInit {
     items: MenuItem[] | undefined;
+    displayFeatureDialog: boolean = false;
 
     ngOnInit() {
         this.items = [
@@ -19,8 +24,11 @@ export class MenuBarComponent implements OnInit {
                 icon: 'pi pi-home'
             },
             {
-                label: 'Features',
-                icon: 'pi pi-star'
+                label: 'Ajouter',
+                icon: 'pi pi-star',
+                command: () => {
+                    this.displayFeatureDialog = true;
+                }
             },
             {
                 label: 'Projects',

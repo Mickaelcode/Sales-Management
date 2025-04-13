@@ -1,5 +1,10 @@
 <div class="card">
-    <p-table [value]="products" [tableStyle]="{ 'min-width': '50rem' }">
+    <p-table
+    [value]="products"
+    [scrollable]="true"
+    scrollHeight="30.5rem"
+    [tableStyle]="{ 'min-width': '50rem' }"
+    >
         <ng-template #header>
             <tr>
                 <th>Designation</th>
@@ -16,7 +21,7 @@
                 <td>{{ product.prix }}</td>
                 <td>{{ product.quantite }}</td>
                 <td>{{ product.prix*product.quantite}}</td>
-                <td><app-button label="Modifier"  severity="warn"></app-button></td>
+                <td><form [data]="product"></form></td>
 				<td><app-button label="Supprimer" numProduit={{product.numProduit}}  severity="danger"></app-button></td>
             </tr>
         </ng-template>

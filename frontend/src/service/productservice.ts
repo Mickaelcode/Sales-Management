@@ -21,12 +21,6 @@ export class ProductService {
     );
   }
 
-  // Exemple : ajouter un utilisateur
-  addUser(data: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/users`, data).pipe(
-      catchError(this.handleError)
-    );
-  }
 
   // Exemple : récupérer un utilisateur par ID
   getUserById(id: string): Observable<any> {
@@ -35,9 +29,8 @@ export class ProductService {
     );
   }
 
-  // Exemple : mise à jour d’un utilisateur
-  updateUser(id: string, data: any): Observable<any> {
-    return this.http.put(`${this.baseUrl}/users/${id}`, data).pipe(
+  updateProduct(numProduit: string,data:any): Observable<any> {
+    return this.http.put(`${this.baseUrl}/users/${numProduit}`, data).pipe(
       catchError(this.handleError)
     );
   }
