@@ -25,8 +25,7 @@ export class MenuBarComponent implements OnInit {
 	quantite: number = 0
 
 	constructor( 
-		private productservice : ProductService,
-			   ){}
+		private productservice : ProductService,	   ){}
 
 
 
@@ -34,7 +33,7 @@ export class MenuBarComponent implements OnInit {
 
 
 	handleClick(){
-		const sale = {
+		const sale :Product = {
 		numProduit:this.numProduit,
 		design:this.designation,
 		prix:this.prix,
@@ -49,7 +48,7 @@ export class MenuBarComponent implements OnInit {
 				console.log('error add')
 			}
 		})
-
+//		this.tabscomponent.ngOnInit()
 		this.displayFeatureDialog = false
 	}
 
