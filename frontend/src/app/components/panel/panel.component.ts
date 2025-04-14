@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,Input} from '@angular/core';
 import { FieldsetModule } from 'primeng/fieldset';
 import { AvatarModule } from 'primeng/avatar';
 
@@ -9,5 +9,6 @@ import { AvatarModule } from 'primeng/avatar';
   templateUrl: './panel.component.html'
 })
 export class PanelComponent {
-
+  @Input() label:string="";
+  @Input() montant:number = 0;
 }

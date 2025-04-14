@@ -3,7 +3,7 @@
     [value]="products"
     [scrollable]="true"
     scrollHeight="30.5rem"
-    [tableStyle]="{ 'min-width': '50rem' }"
+    [tableStyle]="{ 'min-width': '50rem'}"
     >
         <ng-template #header>
             <tr>
@@ -21,7 +21,7 @@
                 <td>{{ product.prix }}</td>
                 <td>{{ product.quantite }}</td>
                 <td>{{ product.prix*product.quantite}}</td>
-                <td><form [data]="product"></form></td>
+                <td><form [productData]="product"></form></td>
 				<td><app-button label="Supprimer" numProduit={{product.numProduit}}  severity="danger"></app-button></td>
             </tr>
         </ng-template>

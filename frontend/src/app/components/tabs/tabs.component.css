@@ -1,0 +1,14 @@
+/* Applique des paddings plus petits sur les cellules */
+.p-table.compact-table .p-datatable-tbody > tr > td,
+.p-table.compact-table .p-datatable-thead > tr > th,
+.compact-table .p-datatable-tbody > tr > td,
+.compact-table .p-datatable-thead > tr > th {
+  padding: 0.3rem 0.5rem !important;
+  font-size: 0.85rem;
+  line-height: 1.2;
+}
+
+/* Réduit la hauteur minimale des lignes */
+.compact-table .p-datatable-tbody > tr {
+  height: auto !important;
+}

@@ -5,6 +5,7 @@ import { DesignerService } from '../../../service/designerService';
 import { ChartModule } from 'primeng/chart';
 import { ProductService } from '../../../service/productservice';
 import { minMaxTotal } from '../../../domain/minMaxTotal';
+import { Input } from '@angular/core';
 
 @Component({
     selector: 'histogramm',
@@ -13,7 +14,7 @@ import { minMaxTotal } from '../../../domain/minMaxTotal';
     imports: [ChartModule]
 })
 export class Diagramm implements OnInit {
-    products : minMaxTotal = {total:0,minimum:0,maximum:0}
+    @Input() products : minMaxTotal = {total:0,minimum:0,maximum:0}
 
     basicData: any;
 

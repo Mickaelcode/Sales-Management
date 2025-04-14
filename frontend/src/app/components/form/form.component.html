@@ -3,23 +3,23 @@
     <p-dialog header="Modifier produit" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }">
         <div class="flex items-center gap-4 mb-2">
             <label for="username" class="font-semibold w-10rem">numProduit</label>
-            <input pInputText id="username" class="flex-auto" autocomplete="off" [value]="data.numProduit"/>
+            <input pInputText id="username" class="flex-auto" autocomplete="off" [value]="productData.numProduit"/>
         </div>
         <div class="flex items-center gap-4 mb-2">
             <label for="design" class="font-semibold w-10rem">designation</label>
-            <input pInputText id="design" class="flex-auto" autocomplete="off" [value]="data.design"/>
+            <input pInputText id="design" class="flex-auto" autocomplete="off" [(ngModel)]="productData.design"/>
         </div>
         <div class="flex items-center gap-4 mb-2">
             <label for="prix" class="font-semibold w-10rem">prix</label>
-            <input pInputText id="prix" class="flex-auto" autocomplete="off" [value]="data.prix"/>
+            <input pInputText id="prix" class="flex-auto" autocomplete="off" [(ngModel)]="productData.prix"/>
         </div>
         <div class="flex items-center gap-4 mb-4">
             <label for="quantite" class="font-semibold w-10rem">quantité</label>
-            <input pInputText id="quantite" class="flex-auto" autocomplete="off" [value]="data.quantite"/>
+            <input pInputText id="quantite" class="flex-auto" autocomplete="off" [(ngModel)]="productData.quantite"/>
         </div>
         <div class="flex justify-end gap-2">
-            <p-button label="Retour" severity="secondary" (click)="visible = false" />
-            <p-button label="Enrigistrer" (click)="visible = false" />
+            <p-button label="Annuler" (click)="visible = false" />
+            <message [response]="response" [visible]="show" (action)="save()" [nature]="'Modification'"></message>
         </div>
     </p-dialog>
 </div>

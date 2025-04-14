@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpErrorResponse } from '@angular/common/http';
 import { Observable, catchError, throwError } from 'rxjs';
-import {Product} from '../domain/product';
+import { Product } from '../domain/product';
+
 
 @Injectable({
   providedIn: 'root'
@@ -36,8 +37,8 @@ export class ProductService {
     );
   }
 
-  updateProduct(numProduit: string,data:any): Observable<any> {
-    return this.http.put(`${this.baseUrl}/users/${numProduit}`, data).pipe(
+  updateProduct(product : Product): Observable<any> {
+    return this.http.put(`${this.baseUrl}/sale/${product.numProduit}`, product).pipe(
       catchError(this.handleError)
     );
   }
