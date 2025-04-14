@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Product } from '../../../domain/product';
 import { ProductService } from '../../../service/productservice';
 import { TableModule } from 'primeng/table';
@@ -11,7 +11,8 @@ import { Form } from '../form/form.component';
   imports: [TableModule, CommonModule, ButtonComponent,Form],
   templateUrl: './tabs.component.html',
   styleUrl: './tabs.component.css',
-  standalone: true
+  standalone: true,
+  encapsulation: ViewEncapsulation.None
 })
 export class TabsComponent implements OnInit {
   products!: Product[];
