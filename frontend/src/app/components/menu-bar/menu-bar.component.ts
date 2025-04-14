@@ -4,18 +4,53 @@ import { Menubar } from 'primeng/menubar';
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
+import {FormsModule} from '@angular/forms';
+import {ProductService} from '../../../service/productservice';
+import {Product} from '../../../domain/product';
 
 
 @Component({
   selector: 'app-menu-bar',
   standalone: true,
-  imports: [Menubar,DialogModule,InputTextModule,ButtonModule],
+  imports: [Menubar,DialogModule,InputTextModule,ButtonModule, FormsModule],
   templateUrl: './menu-bar.component.html',
   styleUrl: './menu-bar.component.css'
 })
 export class MenuBarComponent implements OnInit {
     items: MenuItem[] | undefined;
     displayFeatureDialog: boolean = false;
+	numProduit:string =''
+	designation:string =''
+	prix:number = 0
+	quantite: number = 0
+
+	constructor( 
+		private productservice : ProductService,	   ){}
+
+
+
+
+
+
+	handleClick(){
+		const sale :Product = {
+		numProduit:this.numProduit,
+		design:this.designation,
+		prix:this.prix,
+		quantite:this.quantite
+	}
+		this.productservice.addSale(sale).subscribe({
+			next: (data)=>{
+				console.log("add yessssss")
+				confirm("ajout avec succe")
+			},
+			error: (err)=>{
+				console.log('error add')
+			}
+		})
+//		this.tabscomponent.ngOnInit()
+		this.displayFeatureDialog = false
+	}
 
     ngOnInit() {
         this.items = [

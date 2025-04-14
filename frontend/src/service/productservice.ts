@@ -3,6 +3,7 @@ import { HttpClient,HttpErrorResponse } from '@angular/common/http';
 import { Observable, catchError, throwError } from 'rxjs';
 import { Product } from '../domain/product';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -20,6 +21,12 @@ export class ProductService {
     return this.http.get(`${this.baseUrl}/sale/getArray/montant`).pipe(
       catchError(this.handleError)
     );
+  }
+
+  addSale(sale:Product): Observable<any> {
+	  console.log('I am in root')
+	  console.log(sale)
+	return this.http.post(`${this.baseUrl}/sale`, sale)
   }
 
 
