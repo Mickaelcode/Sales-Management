@@ -81,6 +81,8 @@ export class Diagramm implements OnInit {
             };
 
             this.basicOptions = {
+                maintainAspectRatio: true,
+                responsive: true,
                 plugins: {
                     legend: {
                         labels: {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input,OnInit,Output} from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { Menubar } from 'primeng/menubar';
 import { DialogModule } from 'primeng/dialog';
@@ -18,19 +18,16 @@ import {Product} from '../../../domain/product';
 })
 export class MenuBarComponent implements OnInit {
     items: MenuItem[] | undefined;
-    displayFeatureDialog: boolean = false;
 	numProduit:string =''
 	designation:string =''
 	prix:number = 0
 	quantite: number = 0
+	@Output() itemMenu = new EventEmitter<string>
+
 
 	constructor( 
-		private productservice : ProductService,	   ){}
-
-
-
-
-
+		private productservice : ProductService
+    ){}
 
 	handleClick(){
 		const sale :Product = {
@@ -48,59 +45,33 @@ export class MenuBarComponent implements OnInit {
 				console.log('error add')
 			}
 		})
-//		this.tabscomponent.ngOnInit()
-		this.displayFeatureDialog = false
 	}
 
     ngOnInit() {
         this.items = [
             {
-                label: 'Home',
-                icon: 'pi pi-home'
-            },
-            {
-                label: 'Ajouter',
-                icon: 'pi pi-star',
+                label: 'Table',
+                icon: 'pi pi-table',
                 command: () => {
-                    this.displayFeatureDialog = true;
+                    this.itemMenu.emit('table');
                 }
             },
             {
-                label: 'Projects',
-                icon: 'pi pi-search',
-                items: [
-                    {
-                        label: 'Components',
-                        icon: 'pi pi-bolt'
-                    },
-                    {
-                        label: 'Blocks',
-                        icon: 'pi pi-server'
-                    },
-                    {
-                        label: 'UI Kit',
-                        icon: 'pi pi-pencil'
-                    },
-                    {
-                        label: 'Templates',
-                        icon: 'pi pi-palette',
-                        items: [
-                            {
-                                label: 'Apollo',
-                                icon: 'pi pi-palette'
-                            },
-                            {
-                                label: 'Ultima',
-                                icon: 'pi pi-palette'
-                            }
-                        ]
-                    }
-                ]
+                label: 'Ajouter',
+                icon: 'pi pi-plus',
+                command: () => {
+                    this.itemMenu.emit('addPage');
+                }
             },
             {
-                label: 'Contact',
-                icon: 'pi pi-envelope'
+                label: 'Histogramme',
+                icon: 'pi pi-chart-bar',
+                command: () => {
+                    this.itemMenu.emit('histogramm');
+                }
             }
         ]
     }
+
+	
 }

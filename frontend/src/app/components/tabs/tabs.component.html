@@ -1,9 +1,10 @@
-<div class="card">
+<div class="card" style="height:27rem; overflow: hidden;background-color: white;"><!--background-color: rgb(23, 23, 27);-->
     <p-table
     [value]="products"
     [scrollable]="true"
-    scrollHeight="30.5rem"
+    scrollHeight="28.5rem"
     [tableStyle]="{ 'min-width': '50rem'}"
+    class="h-full"
     >
         <ng-template #header>
             <tr>
@@ -11,8 +12,8 @@
                 <th>Prix</th>
                 <th>Quantité</th>
                 <th>Montant</th>
-                <th>Modifier</th>
-                <th>Supprimer</th>
+                <th></th>
+                <th></th>
             </tr>
         </ng-template>
         <ng-template #body let-product>
@@ -21,9 +22,16 @@
                 <td>{{ product.prix }}</td>
                 <td>{{ product.quantite }}</td>
                 <td>{{ product.prix*product.quantite}}</td>
-                <td><form [productData]="product"></form></td>
-				<td><app-button label="Supprimer" numProduit={{product.numProduit}}  severity="danger"></app-button></td>
+                <td>
+                    <form (annuler2)="ngOnInit()" [produit]="product"></form>
+                </td>
+				<td><delete (delete)="ngOnInit()" [numProduit]="product.numProduit"></delete></td>
             </tr>
         </ng-template>
+        <ng-template #emptymessage>
+            <tr>
+              <td colspan="6" class="text-center">Aucun produit trouvé</td>
+            </tr>
+          </ng-template>
     </p-table>
 </div>

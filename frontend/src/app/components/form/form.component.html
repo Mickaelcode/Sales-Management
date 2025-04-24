@@ -1,6 +1,8 @@
 <div class="card flex justify-center">
-    <p-button (click)="showDialog()" label="Show" />
-    <p-dialog header="Modifier produit" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }">
+    <p-button icon="pi pi-pencil" (click)="showDialog()"/>
+    <classic-form [(visible)]="visible" (annuler)="annuler()" [productData]="produit" [nature]="'modification'"></classic-form>
+
+    <!--<p-dialog header="Modifier produit" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }">
         <div class="flex items-center gap-4 mb-2">
             <label for="username" class="font-semibold w-10rem">numProduit</label>
             <input pInputText id="username" class="flex-auto" autocomplete="off" [value]="productData.numProduit"/>
@@ -21,5 +23,5 @@
             <p-button label="Annuler" (click)="visible = false" />
             <message [response]="response" [visible]="show" (action)="save()" [nature]="'Modification'"></message>
         </div>
-    </p-dialog>
+    </p-dialog>-->
 </div>

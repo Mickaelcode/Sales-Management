@@ -12,10 +12,10 @@ import {SaleModule} from './sale/sale.module';
 		type:'postgres',
 		host: process.env.HOST,
 		port: parseInt(process.env.PORT!),
-		password :'Mika',
+		password :'chrysler0862',
 		username: 'postgres',
 		entities:[Sale],
-		database: process.env.DB_NAME,
+		database: 'salemanagement',
 		synchronize: true,
 	}),
 	SaleModule

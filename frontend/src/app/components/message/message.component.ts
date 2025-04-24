@@ -11,30 +11,23 @@ import { FormsModule } from '@angular/forms';
     imports: [Dialog, ButtonModule, InputTextModule,FormsModule]
 })
 export class Message{
-    @Input() visible: boolean = false;
-    @Output() action = new EventEmitter<boolean>();
     @Input() nature: string ="";
     @Input() response: string ="";
-    //@Input() show:boolean = false;
+    @Input() show:boolean = false;
+    @Output() closeEvent = new EventEmitter<void>;
+    @Output() showChange = new EventEmitter<boolean>();
+    @Output() getMessage = new EventEmitter<any>;
 
     constructor() {}
 
-    /*ngOnChanges(changes: SimpleChanges) {
-        console.log('Changements détectés :', changes);
-        console.log(this.show);
-        
-        if (changes['show'] && this.show) {
-          console.log('Nouvelle show :', changes['show'].currentValue);
-          console.log('Ancienne show :', changes['show'].previousValue);
-        }
-        this.show=false;
-    }*/
-
-    send() {
-        this.action.emit(true);
+    open() {
+        this.showChange.emit(false);
+        this.getMessage.emit();
+    }
+    close() {
+        this.show = false;
+        this.showChange.emit(false);
+        this.closeEvent.emit()
     }
 
-    showDialog() {
-        this.visible = true;
-    }
 }

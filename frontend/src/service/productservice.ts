@@ -8,7 +8,7 @@ import { Product } from '../domain/product';
   providedIn: 'root'
 })
 export class ProductService {
-  private baseUrl = 'http://192.168.43.77:3000';
+  private baseUrl = 'http://localhost:3000';
 
   constructor(private http: HttpClient) {}
   getProducts(): Observable<any> {

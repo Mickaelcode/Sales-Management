@@ -13,29 +13,37 @@
 
 <main>
   <div>
-    <app-menu-bar></app-menu-bar>
+    <app-menu-bar (itemMenu)="showComponent($event)"></app-menu-bar>
   </div>
-  <div class="grid">
-    <div class="col-12 md:col-12 lg:col-6">
-      <div class="row-6">
-        <app-tabs></app-tabs>
+    @if (component['table']) {
+      <div>
+        <div>
+          <app-tabs (refresh)="refresh()"></app-tabs>
+        </div>
+        <div class="grid">
+          <div class="col-4">
+            <app-panel label="Minimum" [montant]="minMaxTotal.minimum"></app-panel>
+          </div>
+          <div class="col-4">
+            <app-panel label="Maximum" [montant]="minMaxTotal.maximum"></app-panel>
+          </div>
+          <div class="col-4">
+            <app-panel label="Total" [montant]="minMaxTotal.total"></app-panel>
+          </div>
+        </div>
       </div>
-      <div class="grid row-6">
-        <div class="col-4">
-          <app-panel label="Minimum" [montant]="minMaxTotal.minimum"></app-panel>
-        </div>
-        <div class="col-4">
-          <app-panel label="Maximum" [montant]="minMaxTotal.maximum"></app-panel>
-        </div>
-        <div class="col-4">
-          <app-panel label="Total" [montant]="minMaxTotal.total"></app-panel>
+    }
+    @if (component['histogramm']) {
+      <div class="grid ">
+        <div class="col-8 mx-auto">
+          <histogramm></histogramm>
         </div>
       </div>
-    </div>
-    <div class="col-12 md:col-12 lg:col-6">
-      <histogramm></histogramm>
-    </div>
-  </div>
+    }@if (component['addPage']) {
+      <div>
+        <classic-form [productData]="{design: '',numProduit : '',prix : 0, quantite : 0}" [(visible)]="component['addPage']" [nature]="'ajout'" (annuler2)="showComponent($event)"></classic-form>
+      </div>
+    }
 </main>
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
