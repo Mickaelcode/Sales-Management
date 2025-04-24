@@ -1,17 +1,20 @@
-import { Component,Input } from '@angular/core';
-import { Dialog } from 'primeng/dialog';
+import { Component,EventEmitter,Input, Output } from '@angular/core';
+//import { Dialog } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { Product } from '../../../domain/product';
-import { Message } from '../message/message.component';
+//import { Message } from '../message/message.component';
 import { ProductService } from '../../../service/productservice';
 import { FormsModule } from '@angular/forms';
+import { ClassicForm } from '../classic-form/classic-form.component';
+import {TabsComponent} from '../tabs/tabs.component';
+
 
 @Component({
     selector: 'form',
     templateUrl: './form.component.html',
     standalone: true,
-    imports: [Dialog, ButtonModule, InputTextModule,Message,FormsModule]
+    imports: [ClassicForm, ButtonModule, InputTextModule,FormsModule]
 })
 export class Form{
     visible: boolean = false;
@@ -19,16 +22,20 @@ export class Form{
     response: string ="";
     clicked : boolean=false;   
     @Input() show : boolean=false;
-    @Input() productData !: Product;
+    @Input() produit!: Product;
+    @Output() annuler2 = new EventEmitter<void>
 
-    constructor(private productService : ProductService,) {}
+    constructor(private productService : ProductService, private tab : TabsComponent) {}
 
+    annuler(){
+      this.annuler2.emit();
+    }
 
     showDialog() {
         this.visible = true;
     }
     save() {
-        this.productService.updateProduct(this.productData).subscribe({
+        this.productService.updateProduct(this.produit).subscribe({
         next: (data) => {
           this.response = "Données modifiées";
           console.log(data);

@@ -1,6 +1,15 @@
 <div class="card">
-    <p-menubar [model]="items" />
-    <p-dialog header="Ajouter produit" [modal]="true" [(visible)]="displayFeatureDialog" [style]="{ width: '25rem' }">
+    <p-menubar [model]="items">
+        <!--<ng-template pTemplate="end">
+            <input
+            type="text"
+            pInputText
+            placeholder="Rechercher..."
+            class="w-48"
+            />
+        </ng-template>-->
+    </p-menubar> 
+    <!--<p-dialog header="Ajouter produit" [modal]="true" [(visible)]="displayFeatureDialog" [style]="{ width: '25rem' }">
         <div class="flex items-center gap-4 mb-2">
             <label for="username" class="font-semibold w-10rem">numProduit</label>
             <input pInputText id="username" [(ngModel)]="numProduit"  class="flex-auto" autocomplete="off" />
@@ -21,5 +30,5 @@
             <p-button label="Retour" severity="secondary" (click)="displayFeatureDialog = false" />
             <p-button label="Enregistrer" (click)="handleClick()" />
         </div>
-    </p-dialog>
+    </p-dialog>-->
 </div>
