@@ -64,10 +64,10 @@ export class Diagramm implements OnInit {
             const surfaceBorder = documentStyle.getPropertyValue('--p-content-border-color');
 
             this.basicData = {
-                labels: ['min','max','total'],
+                labels: ['minimum','maximum','total'],
                 datasets: [
                     {
-                        label: 'Sales',
+                        label: 'Montant',
                         data : [this.products.minimum, this.products.maximum, this.products.total],
                         backgroundColor: [
                             'rgba(249, 115, 22, 0.2)',
